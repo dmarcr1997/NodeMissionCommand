@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev_planet": "nodemon exoPlanet.js",
+    "install-server": "cd client && npm install",
+    "install-client": "cd server && npm install",
+    "install": " npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "concurrently 'npm:server' 'npm:client' ",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +23,5 @@
   "bugs": {
     "url": "https://github.com/dmarcr1997/NodeMissionCommand/issues"
   },
-  "homepage": "https://github.com/dmarcr1997/NodeMissionCommand#readme",
-  "dependencies": {
-    "csv-parse": "^5.3.3"
-  }
+  "homepage": "https://github.com/dmarcr1997/NodeMissionCommand#readme"
 }
