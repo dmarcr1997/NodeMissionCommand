@@ -13,7 +13,7 @@ function httpCreateNewLaunch(req, res) {
         return res.status(400).json(validateOrError)
     };
     createNewLaunch(launch);
-    return res.status(200).json(launch);
+    return res.status(201).json(launch);
 }
 
 function validateLaunch(launch) {
@@ -23,7 +23,7 @@ function validateLaunch(launch) {
             error: 'Missing Required Launch Property'
         }
     }
-    else if(isNaN(launch.launchDate)){
+    else if(isNaN(launch.launchDate) && launch.launchDate){
         return {
             valid: false,
             error: 'Invalid Launch Date'
